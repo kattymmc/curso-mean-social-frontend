@@ -11,6 +11,9 @@ import { UserService } from '../../services/user.service';
 export class LoginComponent implements OnInit{
     public title:string;
     public user:User;
+    public status:string;
+    public identity;
+    public token;
 
     constructor(
         private _route: ActivatedRoute,
@@ -26,8 +29,47 @@ export class LoginComponent implements OnInit{
     }
 
     onSubmit(){
-        alert(this.user.email);
-        alert(this.user.password);
-        console.log(this.user);
+        this._userService.signup(this.user).subscribe(
+            response => {
+               this.identity = response.user;
+               console.log(this.identity);
+               if(!this.identity || !this.identity._id){
+                   this.status = 'error';
+               }else {
+                    this.status = 'success';
+                    // conseguir el token
+                    this.getToken();
+               }
+            },
+            error => {
+                var errorMessage = <any>error;
+                console.log(errorMessage);
+                if(errorMessage != null){
+                    this.status = 'error';
+                }
+            }
+        )
+    }
+
+    // Luego de identificar al usuario se obtendrá el token
+    getToken(){
+        this._userService.signup(this.user, 'true').subscribe(
+            response => {
+               this.token = response.token;
+               console.log(this.token);
+               if(this.token.length <= 0){
+                   this.status = 'error';
+               }else {
+                   this.status = 'success';
+               }
+            },
+            error => {
+                var errorMessage = <any>error;
+                console.log(errorMessage);
+                if(errorMessage != null){
+                    this.status = 'error';
+                }
+            }
+        )
     }
 }
