@@ -25,3 +25,13 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+Libraries in package.json added
+* "bootstrap": "4.6.0"
+* "jquery": "3.5.1"
+
+Scripts and styles in angular.json added
+* "node_modules/jquery/dist/jquery.min.js",
+* "node_modules/bootstrap/dist/js/bootstrap.min.js"
+* "node_modules/bootstrap/dist/css/bootstrap.min.css"
+
