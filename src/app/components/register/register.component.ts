@@ -11,6 +11,7 @@ import { UserService } from '../../services/user.service';
 export class RegisterComponent implements OnInit{
     public title: string;
     public user: User;
+    public status: string;
 
     constructor( 
         private _route: ActivatedRoute,
@@ -24,7 +25,21 @@ export class RegisterComponent implements OnInit{
         console.log('Componente de register cargado ...')
     }
 
-    onSubmit(){
-        this._userService.register(this.user);
+    //onSubmit(objeto de formulario)
+    onSubmit(form){
+        this._userService.register(this.user).subscribe(
+            response => {
+                if(response.user && response.user._id){
+                    this.status = 'success';
+                    // Borrar los datos del formulario una vez guardados
+                    form.reset();
+                } else {
+                    this.status = 'error';
+                }
+            },
+            error => {
+                console.log(<any>error);
+            }
+        );
     }
 }
