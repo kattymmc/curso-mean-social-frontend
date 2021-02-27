@@ -1,4 +1,8 @@
 /*Generales*/
+.active{
+    background: #cc1717;
+}
+
 .h1-strong{
     font-size: 35px;
     font-weight: bold;
@@ -16,10 +20,15 @@
 
 .navigation .navbar {
     border-radius: 0px !important;
+    padding: 0px;
     background: #e53c37 !important;
     border: none;
 }
 
 .navigation .navbar * {
     color: white !important;
+}
+
+.navigation .navbar a:hover{
+    background: #cc1717 !important;
 }

@@ -37,6 +37,10 @@ export class LoginComponent implements OnInit{
                    this.status = 'error';
                }else {
                     this.status = 'success';
+                    // PERSISTIR TOKEN DEL USUARIO
+                    // Guardar una variable dentro del local storage (almacenamiento del navegador)
+                    // Se debe convertir el objeto JSON a un String
+                    localStorage.setItem('identity', JSON.stringify(this.identity));
                     // conseguir el token
                     this.getToken();
                }
@@ -61,6 +65,8 @@ export class LoginComponent implements OnInit{
                    this.status = 'error';
                }else {
                    this.status = 'success';
+                   // PERSISTIR TOKEN DEL USUARIO
+                   localStorage.setItem('token', this.token);
                }
             },
             error => {
