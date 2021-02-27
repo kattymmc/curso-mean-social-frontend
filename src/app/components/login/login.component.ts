@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit{
                if(!this.identity || !this.identity._id){
                    this.status = 'error';
                }else {
-                    this.status = 'success';
                     // PERSISTIR TOKEN DEL USUARIO
                     // Guardar una variable dentro del local storage (almacenamiento del navegador)
                     // Se debe convertir el objeto JSON a un String
@@ -64,11 +63,10 @@ export class LoginComponent implements OnInit{
                if(this.token.length <= 0){
                    this.status = 'error';
                }else {
-                   this.status = 'success';
                    // PERSISTIR TOKEN DEL USUARIO
                    localStorage.setItem('token', this.token);
-
-                   this._router.navigate(['/']);
+                   // DEVOLVER LAS ESTADISTICAS DEL USUARIO (followings, followed, publications)
+                   this.getCounters();
                }
             },
             error => {
@@ -77,6 +75,19 @@ export class LoginComponent implements OnInit{
                 if(errorMessage != null){
                     this.status = 'error';
                 }
+            }
+        )
+    }
+
+    getCounters(){
+        this._userService.getCounters().subscribe(
+            response => {
+                localStorage.setItem('stats', JSON.stringify(response));
+                this.status = 'success';
+                this._router.navigate(['/']);
+            },
+            error => {
+                console.log(<any>error);
             }
         )
     }
