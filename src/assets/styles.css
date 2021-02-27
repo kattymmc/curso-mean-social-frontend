@@ -21,6 +21,21 @@
     padding: 0px !important;
 }
 
+.navigation .avatar{
+    width: 35px;
+    height: 35px;
+    border-radius: 100px;
+    overflow: hidden;
+    margin-top: 8px;
+    margin-right: 5px;
+}
+
+.navigation .avatar img{
+    margin-top: -5px;
+    margin-left: -5px;
+    height: auto;
+    width: 35px;
+}
 .navigation .navbar {
     border-radius: 0px !important;
     padding: 0px;
