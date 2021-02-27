@@ -29,6 +29,19 @@
     color: white !important;
 }
 
-.navigation .navbar a:hover{
+.navigation .navbar li:hover{
     background: #cc1717 !important;
+}
+.navigation .navbar li{
+    padding: 5px;
+}
+
+.navigation .navbar .dropdown-menu *{
+    color: black !important;
+}
+
+.jumbotron{
+    padding: 25px;
+    border-radius: 5px !important;
+    text-align: center;
 }
