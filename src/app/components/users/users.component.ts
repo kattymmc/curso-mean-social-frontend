@@ -20,6 +20,7 @@ export class UsersComponent implements OnInit{
     public total;
     public pages;
     public users: User[];
+    public url: string;
 
     constructor(
         private _route: ActivatedRoute,
@@ -29,6 +30,7 @@ export class UsersComponent implements OnInit{
         this.title = 'Gente';
         this.identity = this._userService.getIdentity();
         this.token = this._userService.getToken();
+        this.url = GLOBAL.url;
     }
 
     ngOnInit(){
