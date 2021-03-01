@@ -42,7 +42,7 @@ export class UserService{
         // Convertir el String en objeto JSON
         let identity = JSON.parse(localStorage.getItem('identity'))
 
-        console.log(identity);
+        //console.log(identity);
     
         if(identity != "undefined"){
             this.identity = identity;
@@ -55,7 +55,7 @@ export class UserService{
     getToken(){
         let token = localStorage.getItem('token');
 
-        console.log(token);
+        //console.log(token);
 
         if(token != "undefined"){
             this.token = token;
@@ -92,5 +92,18 @@ export class UserService{
         let headers = new HttpHeaders().set('Content-Type','application/json')
                                        .set('Authorization', this.getToken());
         return this._http.put(this.url+'update-user/'+user._id, params, {headers: headers});
+    }
+
+    // Retornar Users paginados
+    getUsers(page = null): Observable<any>{
+        let headers = new HttpHeaders().set('Content-Type','application/json')
+                                       .set('Authorization', this.getToken());
+        return this._http.get(this.url + 'users/' + page, {headers: headers});
+    }
+     // Retornar un User segun su ID
+    getUser(id): Observable<any>{
+        let headers = new HttpHeaders().set('Content-Type','application/json')
+                                       .set('Authorization', this.getToken());
+        return this._http.get(this.url + 'user/' + id, {headers: headers});
     }
 }
