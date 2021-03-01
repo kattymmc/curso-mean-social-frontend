@@ -3,7 +3,7 @@
 
     <div class="people list-group">
         <div *ngFor="let user of users" class="item-user list-group-item">
-                <div class="">
+ 
                     <div class="image-user pull-left">
                         <a href="#">
                             <img src="{{url +'get-image-user/'+user.image}}" *ngIf="user.image"/>
@@ -21,7 +21,29 @@
                     </div>
 
                     <!--SEGUIR/DEJAR DE SEGUIR-->
-                </div>
+                    <div class="follow-buttons">
+                        <button class="btn btn-success" *ngIf="follows.indexOf(user._id) < 0">
+                            <i class="bi bi-plus-circle-fill"></i>
+                            Seguir
+                        </button>
+                        
+                        <button class="btn btn-primary" 
+                        *ngIf="follows.indexOf(user._id) >= 0"
+                        (mouseenter)="mouseEnter(user._id)"
+                        (mouseleave)="mouseLeave(user._id)"
+                        [class.btn-danger]="user._id == followUserOver">
+                            <span *ngIf="user._id == followUserOver; else following">
+                                <i class="bi bi-dash-circle-fill"></i>
+                                Dejar de seguir
+                            </span>
+                            
+                            <ng-template #following>
+                                <i class="bi bi-check-circle-fill"></i>
+                                    Siguiendo
+                            </ng-template>
+                        </button>
+                    </div>
+
         </div>
     </div>
 

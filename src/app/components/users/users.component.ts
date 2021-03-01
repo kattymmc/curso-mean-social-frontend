@@ -21,6 +21,7 @@ export class UsersComponent implements OnInit{
     public pages;
     public users: User[];
     public url: string;
+    public follows;
 
     constructor(
         private _route: ActivatedRoute,
@@ -74,6 +75,7 @@ export class UsersComponent implements OnInit{
                     this.total = response.total;
                     this.users = response.users;
                     this.pages = response.pages;
+                    this.follows = response.users_following;
                     if(page > this.pages){
                         this._router.navigate(['/gente',1]);
                     }
@@ -88,5 +90,14 @@ export class UsersComponent implements OnInit{
                 }
             }
         )
+    }
+
+    // Eventos para los botones al momento que el mouse entre o salga del boton
+    public followUserOver;
+    mouseEnter(user_id){
+        this.followUserOver = user_id;
+    }
+    mouseLeave(user_id){
+        this.followUserOver = 0;
     }
 }
