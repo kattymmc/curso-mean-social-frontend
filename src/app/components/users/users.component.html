@@ -24,4 +24,12 @@
                 </div>
         </div>
     </div>
+
+    <!--PAGINACION-->
+    <div class="pagination">
+        <ul>
+            <li *ngIf="page > 1"><a [routerLink]="['/gente', prev_page]">Anterior</a></li>
+            <li *ngIf="pages != page"><a [routerLink]="['/gente', next_page]">Siguiente</a></li>
+        </ul>
+    </div>
 </div>

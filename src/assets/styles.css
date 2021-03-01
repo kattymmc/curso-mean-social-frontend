@@ -81,6 +81,7 @@
 .item-user .user-name{
     margin-top: 5px;
     float: left;
+
 }
 
 .item-user .user-name .nickname{
@@ -95,4 +96,19 @@
 
 .avatar-default{
     width: 100% !important;
+}
+
+.pagination { 
+    margin-top: 10px;
+    float: right;
+}
+
+.pagination li{ 
+    list-style: none;
+    padding: 5px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: thin;
+    border-color: #969393;
+    float: left;
 }

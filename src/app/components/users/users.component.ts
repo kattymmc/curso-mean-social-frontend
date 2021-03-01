@@ -44,6 +44,10 @@ export class UsersComponent implements OnInit{
             let page = +params['page'];
             this.page = page;
 
+            if(!params['page']){
+                page=1;
+            }
+
             if(!page){
                 page = 1;
             }else{
