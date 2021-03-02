@@ -1,10 +1,10 @@
-<div class="col-lg-8">
+<div class="col-lg-8 flotante">
     <h1 class="h1-strong">{{title}}</h1>
 
     <div class="people list-group">
         <div *ngFor="let user of users" class="item-user list-group-item">
  
-                    <div class="image-user pull-left">
+                    <div class="image-user">
                         <a href="#">
                             <img src="{{url +'get-image-user/'+user.image}}" *ngIf="user.image"/>
                             <img src="assets/user.png" class="avatar-default" *ngIf="!user.image"/>
@@ -57,3 +57,10 @@
         </ul>
     </div>
 </div>
+
+<div class="col-lg">
+    <sidebar></sidebar>
+</div>
+
+
+

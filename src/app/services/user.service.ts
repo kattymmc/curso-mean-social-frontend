@@ -73,7 +73,7 @@ export class UserService{
         }else{
             this.stats = null;
         }
-        return this.getStats;
+        return this.stats;
     }
 
     getCounters(userId = null): Observable<any>{
