@@ -21,8 +21,9 @@
                     </div>
 
                     <!--SEGUIR/DEJAR DE SEGUIR-->
-                    <div class="follow-buttons">
-                        <button class="btn btn-success" *ngIf="follows.indexOf(user._id) < 0">
+                    <div class="follow-buttons" *ngIf="user._id != identity._id">
+                        <button class="btn btn-success" *ngIf="follows.indexOf(user._id) < 0"
+                        (click)="followUser(user._id)">
                             <i class="bi bi-plus-circle-fill"></i>
                             Seguir
                         </button>
