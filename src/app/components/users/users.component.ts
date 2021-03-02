@@ -127,4 +127,26 @@ export class UsersComponent implements OnInit{
             }
         );
     }
+
+    // DEJAR DE SEGUIR A UN USUARIO
+    unfollowUser(followed){
+        this._followService.deleteFollow(this.token, followed).subscribe(
+            response => {
+                // Buscar el elemento followed en el array Follows
+                var search = this.follows.indexOf(followed);
+                // Si lo encuentra
+                if(search != -1){
+                    this.follows.splice(search, 1);
+                }
+            }, 
+            error => {
+                var errorMessage = <any>error;
+                console.log(errorMessage);
+
+                if(errorMessage != null){
+                    this.status = 'error';
+                }
+            }
+        )
+    }
 }
