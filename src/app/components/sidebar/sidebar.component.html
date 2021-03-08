@@ -55,7 +55,14 @@
 
   <div id="new-publication" class="card">
 
-    <form #newPubForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-10">
+    <div class="alert alert-success" *ngIf="status == 'success'">
+      Publicación enviada correctamente
+    </div>
+    <div class="alert alert-danger" *ngIf="status == 'error'">
+      Publicación no enviada
+    </div>
+
+    <form #newPubForm="ngForm" (ngSubmit)="onSubmit(newPubForm)" class="col-lg-10">
       <p>
         <label>¿Que estas pensado hoy?</label>
         <textarea name="text" #text="ngModel" [(ngModel)]="publication.text" class="form-control" required></textarea>
