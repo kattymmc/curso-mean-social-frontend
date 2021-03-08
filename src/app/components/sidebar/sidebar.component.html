@@ -1,53 +1,73 @@
 <div class="flotante">
-    <h1 class="h1-strong">Hola, {{identity.name}}</h1>
-    <div id="user-card" class="card">
+  <h1 class="h1-strong">Hola, {{identity.name}}</h1>
+  <div id="user-card" class="card">
 
     <div class="datos-usuario">
-        <div class="avatar">
-            <img src="{{ url + 'get-image-user/' + identity.image }}" *ngIf="identity.image">
-            <img src="assets/user.png" *ngIf="!identity.image">
-        </div>
+      <div class="avatar">
+        <img src="{{ url + 'get-image-user/' + identity.image }}" *ngIf="identity.image">
+        <img src="assets/user.png" *ngIf="!identity.image">
+      </div>
 
-        <div class="name-surname">
-            <a href="#" class="username">
-                {{ identity.name + ' ' + identity.surname }}
-            </a>
-            <p class="nickname">{{identity.nick}}</p>
-        </div>
+      <div class="name-surname">
+        <a href="#" class="username">
+          {{ identity.name + ' ' + identity.surname }}
+        </a>
+        <p class="nickname">{{identity.nick}}</p>
+      </div>
     </div>
-       
 
-        <div class="stats" *ngIf="stats">
-            <div class="following-data">
-                <a href="#">
-                    <span class="label-stats">
-                        Siguiendo
-                    </span>
-                    <span class="number-stats">
-                        {{stats.following}}
-                    </span>
-                </a>
-            </div>
-            <div class="following-data">
-                <a href="#">
-                    <span class="label-stats">
-                        Seguidores
-                    </span>
-                    <span class="number-stats">
-                        {{stats.followed}}
-                    </span>
-                </a>
-            </div>
-            <div class="following-data">
-                <a href="#">
-                    <span class="label-stats">
-                        Publicaciones
-                    </span>
-                    <span class="number-stats">
-                        {{stats.publications}}
-                    </span>
-                </a>
-            </div>
-        </div>
+
+    <div class="stats" *ngIf="stats">
+      <div class="following-data">
+        <a href="#">
+          <span class="label-stats">
+            Siguiendo
+          </span>
+          <span class="number-stats">
+            {{stats.following}}
+          </span>
+        </a>
+      </div>
+      <div class="following-data">
+        <a href="#">
+          <span class="label-stats">
+            Seguidores
+          </span>
+          <span class="number-stats">
+            {{stats.followed}}
+          </span>
+        </a>
+      </div>
+      <div class="following-data">
+        <a href="#">
+          <span class="label-stats">
+            Publicaciones
+          </span>
+          <span class="number-stats">
+            {{stats.publications}}
+          </span>
+        </a>
+      </div>
     </div>
+  </div>
+
+  <!--FORMULARIO DE PUBLICACIONES-->
+
+  <div id="new-publication" class="card">
+
+    <form #newPubForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-10">
+      <p>
+        <label>¿Que estas pensado hoy?</label>
+        <textarea name="text" #text="ngModel" [(ngModel)]="publication.text" class="form-control" required></textarea>
+        <span *ngIf="!text.valid && text.touched">
+          El texto de la publicacion es obligatorio
+        </span>
+      </p>
+      <p>
+        <label>Sube tu foto</label>
+        <input type="file" placeholder="Subit imagen" />
+      </p>
+      <input type="submit" value="Enviar" class="btn btn-success" [disabled]="!newPubForm.form.valid">
+    </form>
+  </div>
 </div>

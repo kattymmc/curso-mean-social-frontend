@@ -98,12 +98,12 @@
     width: 100% !important;
 }
 
-.pagination { 
+.pagination {
     margin-top: 10px;
     float: right;
 }
 
-.pagination li{ 
+.pagination li{
     list-style: none;
     padding: 5px;
     border-radius: 5px;
@@ -201,4 +201,11 @@
 
 #user-card .following-data:last-child{
     border: none;
+}
+
+#new-publication{
+  margin-top: 20px;
+  width: min-content;
+  padding: 18px;
+  padding-left: 8px;
 }
