@@ -7,6 +7,7 @@ import { GLOBAL } from '../../services/global';
 import { UserService } from '../../services/user.service';
 import { PublicationService } from '../../services/publication.service';
 
+
 @Component({
     selector: 'timeline',
     templateUrl: './timeline.component.html',
@@ -90,4 +91,11 @@ export class TimelineComponent implements OnInit{
     this.page += 1;
     this.getPublications(this.page, true);
   }
+  refresh(event){
+   //console.log(event);
+    this.getPublications(1);
+    this.page = 1;
+    this.noMore = false;
+  }
+
 }

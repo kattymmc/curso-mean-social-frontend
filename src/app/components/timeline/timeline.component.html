@@ -1,5 +1,6 @@
 <div class="col-lg-8 flotante">
   <h1 class="h1-strong">{{title}}</h1>
+
   <div id="publications" class="list-group">
     <div *ngFor="let publication of publications" class="item-publication list-group-item">
 
@@ -26,20 +27,18 @@
       </div>
 
     </div>
-  </div>
 
-  <div class="col-lg-12 text-center">
-    <p>
-      <button class="btn btn-success" (click)="viewMore()" *ngIf="!noMore">
-        Ver más publicaciones
-      </button>
-    </p>
-  </div>
+    <div class="col-lg-12 text-center">
+      <p>
+        <button class="btn btn-success" (click)="viewMore()" *ngIf="!noMore">
+          Ver más publicaciones
+        </button>
+      </p>
+    </div>
 
+  </div>
 </div>
 
-
-
 <div class="col-lg">
-  <sidebar></sidebar>
+  <sidebar (sended)="refresh($event)"></sidebar>
 </div>
