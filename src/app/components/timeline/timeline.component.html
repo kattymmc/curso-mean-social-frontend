@@ -1,5 +1,8 @@
 <div class="col-lg-8 flotante">
-  <h1 class="h1-strong">{{title}}</h1>
+  <div>
+    <h1 class="h1-strong">{{title}}</h1>
+    <button class="btn btn-success btn-sm" (click)="refresh($event)">Mostrar nuevas</button>
+  </div>
 
   <div id="publications" class="list-group">
     <div *ngFor="let publication of publications" class="item-publication list-group-item">
