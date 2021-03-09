@@ -1,10 +1,37 @@
 <div class="col-lg-8 flotante">
   <h1 class="h1-strong">{{title}}</h1>
+  <div id="publications" class="list-group">
+    <div *ngFor="let publication of publications" class="item-publication list-group-item">
 
-  <div id="publications">
+        <div class="image-user">
+          <a href="#">
+              <img src="{{url +'get-image-user/'+publication.user.image}}" *ngIf="publication.user.image"/>
+              <img src="assets/user.png" class="avatar-default" *ngIf="!publication.user.image"/>
+          </a>
+        </div>
+      <div class="user-name">
+          <div>
+            {{publication.user.name + ' ' + publication.user.surname}}
+          </div>
+          <h4 class="publication-text">
+            {{publication.text}}
+          </h4>
+      </div>
 
+    </div>
   </div>
+
+  <div class="col-lg-12 text-center">
+    <p>
+      <button class="btn btn-success" (click)="viewMore()" *ngIf="!noMore">
+        Ver más publicaciones
+      </button>
+    </p>
+  </div>
+
 </div>
+
+
 
 <div class="col-lg">
   <sidebar></sidebar>

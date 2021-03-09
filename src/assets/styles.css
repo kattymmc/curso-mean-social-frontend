@@ -65,7 +65,8 @@
 }
 
 /*AVATAR DE USUARIOS*/
-.item-user .image-user{
+.item-user .image-user,
+.item-publication .image-user{
     width: 75px;
     height: 75px;
     border-radius: 100px;
@@ -74,11 +75,13 @@
     float: left;
 }
 
-.item-user .image-user img{
+.item-user .image-user img,
+.item-publication .image-user img{
     width: 73px;
 }
 
-.item-user .user-name{
+.item-user .user-name,
+.item-publication .user-name{
     margin-top: 5px;
     float: left;
 
