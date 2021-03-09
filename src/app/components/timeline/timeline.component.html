@@ -10,9 +10,16 @@
           </a>
         </div>
       <div class="user-name">
-          <div>
+        <div>
+          <span>
             {{publication.user.name + ' ' + publication.user.surname}}
-          </div>
+          </span>
+          &nbsp;|&nbsp;
+          <span class="date">
+            {{ (publication.created_at | amFromUnix) | amLocale:'es' | amTimeAgo }}
+          </span>
+      </div>
+
           <h4 class="publication-text">
             {{publication.text}}
           </h4>
