@@ -35,3 +35,5 @@ Scripts and styles in angular.json added
 * "node_modules/bootstrap/dist/js/bootstrap.min.js"
 * "node_modules/bootstrap/dist/css/bootstrap.min.css"
 
+packages to install
+* npm install --save angular2-moment
