@@ -1,8 +1,16 @@
 <div class="col-lg-8 flotante">
     <h1 class="h1-strong">{{title}}</h1>
 
-    <div id="data-profile">
+    <div id="data-profile" *ngIf="user">
+      <div class="avatar">
+        <img src="{{ url + 'get-image-user/' + user.image }}" *ngIf="user.image" />
+        <img src="assets/user.png" *ngIf="!user.image">
+      </div>
 
+      <div class="user-name">
+        <p class="name">{{user.name + ' ' + user.surname}}</p>
+        <p class="nick">{{user.nick}}</p>
+      </div>
     </div>
 
 </div>

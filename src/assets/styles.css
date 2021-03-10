@@ -216,3 +216,36 @@
 #publications .date{
   color:#969393;
 }
+
+
+/*PERFILES*/
+#data-profile .avatar{
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  overflow: hidden;
+  margin-right: 15px;
+  float: left;
+}
+
+#data-profile .avatar img{
+  width: 100%;
+}
+
+#data-profile .user-name{
+  float: left;
+  margin-top: 20px;
+}
+
+#data-profile .user-name .name{
+  font-size: 24px;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+#data-profile .user-name .nick{
+  font-size: 24px;
+  font-weight: normal;
+  color: gray;
+}
