@@ -13,6 +13,7 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { UsersComponent } from './components/users/users.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TimelineComponent } from './components/timeline/timeline.component';
     UsersComponent,
     SidebarComponent,
     TimelineComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
