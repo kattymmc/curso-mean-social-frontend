@@ -117,4 +117,14 @@ export class ProfileComponent implements OnInit{
         }
       );
     }
+
+    // EFECTO DEL BOTON SEGUIR - DEJAR DE SEGUIR
+    public followUserOver;
+    mouseEnter(user_id){
+      this.followUserOver = user_id;
+    }
+
+    mouseLeave(){
+      this.followUserOver = 0;
+    }
 }
