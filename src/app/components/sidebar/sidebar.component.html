@@ -9,7 +9,7 @@
       </div>
 
       <div class="name-surname">
-        <a href="#" class="username">
+        <a  [routerLink]="['/perfil',identity._id]" class="username">
           {{ identity.name + ' ' + identity.surname }}
         </a>
         <p class="nickname">{{identity.nick}}</p>

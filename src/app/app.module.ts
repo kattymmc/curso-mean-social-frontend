@@ -14,6 +14,7 @@ import { UsersComponent } from './components/users/users.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { PublicationsComponent } from './components/publications/publications.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     UsersComponent,
     SidebarComponent,
     TimelineComponent,
-    ProfileComponent
+    ProfileComponent,
+    PublicationsComponent
   ],
   imports: [
     BrowserModule,

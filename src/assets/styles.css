@@ -213,9 +213,10 @@
   padding-left: 8px;
 }
 
-#publications .date{
+#publications .date, #publications-user{
   color:#969393;
 }
+
 
 
 /*PERFILES*/
@@ -262,4 +263,10 @@
   font-size: 20px;
   line-height: 35px;
   color: #555;
+}
+
+#data-profile .publications-user{
+  float: left;
+  width: 100%;
+  margin-top: 40px;
 }
