@@ -37,7 +37,7 @@ export class SidebarComponent implements OnInit{
         console.log('sidebar.component cargado');
     }
 
-    onSubmit(form){
+    onSubmit(form, $event){
       this._publicationService.addPublication(this.token, this.publication).subscribe(
         response => {
           if(response.publication){
@@ -52,6 +52,7 @@ export class SidebarComponent implements OnInit{
                 form.reset();
                 // redireccionar
                 this._router.navigate(['/timeline']);
+                this.sended.emit({send: 'true'});
             });
             } else {
               this.status = 'success';
@@ -59,6 +60,7 @@ export class SidebarComponent implements OnInit{
               form.reset();
               // redireccionar
               this._router.navigate(['/timeline']);
+              this.sended.emit({send: 'true'});
             }
 
           } else {
