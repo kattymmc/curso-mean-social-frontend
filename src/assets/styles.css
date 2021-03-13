@@ -219,8 +219,12 @@
 
 #publications .show-image{
  margin-left: 20px;
+ float: right;
 }
 
+#publications .image-pub{
+  float: left;
+}
 
 /*PERFILES*/
 #data-profile .avatar{

@@ -41,17 +41,26 @@ export class SidebarComponent implements OnInit{
       this._publicationService.addPublication(this.token, this.publication).subscribe(
         response => {
           if(response.publication){
-            // Subir imagen
-            this._uploadService.makeFileRequest(this.url+'upload-image-pub/'+response.publication._id, [], this.filesToUpload, this.token, 'image')
-                               .then((result:any) => {
-                                 this.publication.file = result.image;
+            if(this.filesToUpload && this.filesToUpload.length){
+              // Subir imagen
+              this._uploadService.makeFileRequest(this.url+'upload-image-pub/'+response.publication._id, [], this.filesToUpload, this.token, 'image')
+              .then((result:any) => {
+                this.publication.file = result.image;
 
-                                 this.status = 'success';
-                                 // limpiar el formulario
-                                 form.reset();
-                                 // redireccionar
-                                 this._router.navigate(['/timeline']);
-                               });
+                this.status = 'success';
+                // limpiar el formulario
+                form.reset();
+                // redireccionar
+                this._router.navigate(['/timeline']);
+            });
+            } else {
+              this.status = 'success';
+              // limpiar el formulario
+              form.reset();
+              // redireccionar
+              this._router.navigate(['/timeline']);
+            }
+
           } else {
             this.status = 'error';
           }

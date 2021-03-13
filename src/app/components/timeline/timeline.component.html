@@ -7,39 +7,67 @@
   <div id="publications" class="list-group">
     <div *ngFor="let publication of publications" class="item-publication list-group-item">
 
-        <div class="image-user">
-          <a href="#">
-              <img src="{{url +'get-image-user/'+publication.user.image}}" *ngIf="publication.user.image"/>
-              <img src="assets/user.png" class="avatar-default" *ngIf="!publication.user.image"/>
-          </a>
-        </div>
+      <div class="image-user">
+        <a href="#">
+          <img src="{{url +'get-image-user/'+publication.user.image}}" *ngIf="publication.user.image" />
+          <img src="assets/user.png" class="avatar-default" *ngIf="!publication.user.image" />
+        </a>
+      </div>
       <div class="user-name">
         <div>
-          <a  [routerLink]="['/perfil', publication.user._id]">
+          <a [routerLink]="['/perfil', publication.user._id]">
             {{publication.user.name + ' ' + publication.user.surname}}
           </a>
           &nbsp;|&nbsp;
           <span class="date">
             {{ (publication.created_at | amFromUnix) | amLocale:'es' | amTimeAgo }}
           </span>
+        </div>
+
+        <h4 class="publication-text">
+          {{publication.text}}
+        </h4>
+
       </div>
 
-          <h4 class="publication-text">
-            {{publication.text}}
-          </h4>
+      <div *ngIf="publication.user._id == identity._id">
+        <!-- Button HTML (to Trigger Modal) -->
+        <a href="#myModal{{publication._id}}" class="btn btn-danger show-image"
+        *ngIf="showImage != publication._id"
+        data-toggle="modal"><i class="bi bi-trash"></i></a>
 
+        <!-- Modal HTML -->
+        <div id="myModal{{publication._id}}" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">¿Seguro que quires eliminar la publicacion?</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <p>Si lo borras no podrás recuperarla</p>
+                <p>{{ publication.text }}</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deletePublication(publication._id)">Borrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div *ngIf="publication.file != 'null'">
         <button class="btn btn-warning show-image" (click)="showThisImage(publication._id)"
-        *ngIf="showImage != publication._id">
+          *ngIf="showImage != publication._id">
           <i class="bi bi-card-image"></i>
         </button>
         <button class="btn btn-danger show-image" (click)="hideThisImage(publication._id)"
-        *ngIf="showImage == publication._id">
+          *ngIf="showImage == publication._id">
           <i class="bi bi-x"></i>
         </button>
       </div>
-      <div class="col-lg-12" *ngIf="publication.file != 'null' && publication.file && showImage==publication._id">
+      <div class="col-lg-12 image-pub" *ngIf="publication.file != 'null' && publication.file && showImage==publication._id">
         <img src="{{ url + 'get-image-pub/' + publication.file }}" class="col-lg-12" />
       </div>
 
