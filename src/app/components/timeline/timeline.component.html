@@ -27,6 +27,20 @@
           <h4 class="publication-text">
             {{publication.text}}
           </h4>
+
+      </div>
+      <div *ngIf="publication.file != 'null'">
+        <button class="btn btn-warning show-image" (click)="showThisImage(publication._id)"
+        *ngIf="showImage != publication._id">
+          <i class="bi bi-card-image"></i>
+        </button>
+        <button class="btn btn-danger show-image" (click)="hideThisImage(publication._id)"
+        *ngIf="showImage == publication._id">
+          <i class="bi bi-x"></i>
+        </button>
+      </div>
+      <div class="col-lg-12" *ngIf="publication.file != 'null' && publication.file && showImage==publication._id">
+        <img src="{{ url + 'get-image-pub/' + publication.file }}" class="col-lg-12" />
       </div>
 
     </div>
