@@ -33,7 +33,7 @@ export class FollowingComponent implements OnInit{
         private _userService: UserService,
         private _followService: FollowService
     ){
-        this.title = 'Following';
+        this.title = 'Usuarios seguidos por';
         this.identity = this._userService.getIdentity();
         this.token = this._userService.getToken();
         this.url = GLOBAL.url;
@@ -67,7 +67,8 @@ export class FollowingComponent implements OnInit{
                 }
             }
 
-            this.getFollows(user_id, page);
+            // devolver listado de USUARIO
+            this.getUser(user_id, page);
         });
     }
 
@@ -97,6 +98,28 @@ export class FollowingComponent implements OnInit{
                 }
             }
         )
+    }
+
+    public user:User;
+    getUser(user_id, page){
+      this._userService.getUser(user_id).subscribe(
+        response => {
+          if(response.user){
+            this.user = response.user;
+            this.getFollows(user_id, page);
+          } else {
+            this._router.navigate(['/home']);
+          }
+        },
+        error => {
+          var errorMessage = <any>error;
+          console.log(errorMessage);
+
+          if(errorMessage != null){
+            this.status = 'error';
+          }
+        }
+      )
     }
 
     // Eventos para los botones al momento que el mouse entre o salga del boton
