@@ -1,5 +1,5 @@
 <div class="col-lg-8 flotante">
-  <h1 class="h1-strong">{{title}} {{user.name}}</h1>
+  <h1 *ngIf="user" class="h1-strong">{{title}} {{user.name}}</h1>
 
   <div class="people list-group" *ngIf="following">
       <div *ngFor="let follow of following" class="item-user list-group-item">
